@@ -1,0 +1,12 @@
+[submodule "plugins/valve220"]
+	path = plugins/valve220
+	url = https://github.com/5hif7y/mirai-valve220.git
+[submodule "plugins/map_convert"]
+	path = plugins/map_convert
+	url = https://github.com/5hif7y/mirai-map-convert.git
+[submodule "plugins/map_agent"]
+	path = plugins/map_agent
+	url = https://github.com/5hif7y/mirai-map-agent.git
+[submodule "plugins/bsp_decompile"]
+	path = plugins/bsp_decompile
+	url = https://github.com/5hif7y/mirai-bsp-decompile.git

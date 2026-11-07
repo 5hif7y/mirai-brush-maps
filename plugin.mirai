@@ -1,6 +1,6 @@
 {
   "name": "brush_maps",
-  "version": "0.1.0",
-  "dependencies": [],
-  "parts": ["Editor"]
+  "version": "0.2.0",
+  "dependencies": ["valve220", "map_convert", "map_agent", "bsp_decompile"],
+  "parts": []
 }
