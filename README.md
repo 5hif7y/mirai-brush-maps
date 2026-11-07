@@ -10,8 +10,9 @@ A plugin for the Mirai engine editor that brings four plugins in one install, as
 | [bsp_decompile](https://github.com/5hif7y/mirai-bsp-decompile) | Imports the BSPs of Quake (29), GoldSrc (30) and BSP2, decompiled to brushes. |
 
 Each one is its own repository, with its code, its README, its tests and its history, and is here as a
-git submodule in `plugins/<name>/`, the folder where the engine finds the companions of a plugin. The
-catalog lists only `brush_maps`.
+git subtree in `plugins/<name>/`, the folder where the engine finds the companions of a plugin: the files
+are in this repository, and the commit each one comes from is in the history. The catalog lists only
+`brush_maps`.
 
 ## Install
 
@@ -22,16 +23,6 @@ mirai plugin add brush_maps
 The four companions are installed, updated and removed with it, and are active when it is. A project
 that already has one of them installed alone cannot add `brush_maps`, and the other way round: their
 names would be repeated.
-
-The companions are submodules, so the engine must clone plugins with their submodules
-([mirai-engine/mirai#2](https://github.com/mirai-engine/mirai/pull/2)). An engine that does not yet
-refuses `mirai plugin add brush_maps`: the companions arrive empty and the project does not open
-without them. With such an engine, clone it by hand in the folder of the project and add
-`brush_maps` to `plugins` in `project.mirai`:
-
-```sh
-git clone --recurse-submodules https://github.com/5hif7y/mirai-brush-maps.git plugins/brush_maps
-```
 
 ## API
 
@@ -47,13 +38,15 @@ The methods of its companions, by their names:
 
 ## How it is kept
 
-A fix goes to the repository of its plugin. Then this one moves the submodule to that commit:
+A fix goes to the repository of its plugin. Then this one brings it:
 
 ```sh
-git -C plugins/<name> pull
-git add plugins/<name>
-git commit
+git subtree pull --prefix plugins/<name> https://github.com/5hif7y/mirai-<name>.git main --squash
 ```
+
+`<name>` with hyphens in the address: `mirai-map-convert` for `map_convert`. The squashed commit names the
+commit of the plugin it comes from. A change made here, in `plugins/<name>/`, goes back to its repository
+with `git subtree push --prefix plugins/<name> <address> <branch>`.
 
 The packages of the four import each other by relative path, so the same files build installed alone
 (`plugins/<name>`) and here (`plugins/brush_maps/plugins/<name>`).
