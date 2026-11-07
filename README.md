@@ -23,11 +23,14 @@ The four companions are installed, updated and removed with it, and are active w
 that already has one of them installed alone cannot add `brush_maps`, and the other way round: their
 names would be repeated.
 
-The companions are submodules: the engine must clone plugins with their submodules. With an engine that
-does not yet, after installing, in the folder of the project:
+The companions are submodules, so the engine must clone plugins with their submodules
+([mirai-engine/mirai#2](https://github.com/mirai-engine/mirai/pull/2)). An engine that does not yet
+refuses `mirai plugin add brush_maps`: the companions arrive empty and the project does not open
+without them. With such an engine, clone it by hand in the folder of the project and add
+`brush_maps` to `plugins` in `project.mirai`:
 
 ```sh
-git -C plugins/brush_maps submodule update --init
+git clone --recurse-submodules https://github.com/5hif7y/mirai-brush-maps.git plugins/brush_maps
 ```
 
 ## API
