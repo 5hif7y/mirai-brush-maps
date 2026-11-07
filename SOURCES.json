@@ -1,0 +1,14 @@
+{
+  "valve220": {
+    "url": "https://github.com/5hif7y/mirai-valve220.git",
+    "commit": "d670e3e496f441d8ccf90fc1f603f5c05a3376a8"
+  },
+  "map_convert": {
+    "url": "https://github.com/5hif7y/mirai-map-convert.git",
+    "commit": "9cc8287d8ee36af6341aa54714643be7d6f49a75"
+  },
+  "map_agent": {
+    "url": "https://github.com/5hif7y/mirai-map-agent.git",
+    "commit": "930b45a1d5aac7f58fcfed0c830f1cc8205b1db2"
+  }
+}
